@@ -1,6 +1,8 @@
 # AI-Resume-Analyzer
 An AI/ML based Resume Analyzer that evaluates resumes against job descriptions using NLP and Machine Learning.
 ## 📁 Project Structure
+
+```text
 AI-Resume-Analyzer/
 │
 ├── app.py
@@ -35,6 +37,7 @@ AI-Resume-Analyzer/
 │   └── helpers.py
 │
 └── tests/
+```
 
 ### 📂 Folder Description
 
