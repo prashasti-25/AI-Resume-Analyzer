@@ -248,7 +248,7 @@ The matching score is an estimate of similarity between a resume and a job descr
 
 **Prashasti Bhatt**
 
-AI Resume Analyzer & Job Matcher — a collaborative project exploring NLP, machine learning, resume parsing, and web application development.
+Resume Screening System — a collaborative project exploring NLP, machine learning, resume parsing, and web application development.
 
 ---
 
