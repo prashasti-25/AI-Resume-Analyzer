@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}History — ResuMatch{% endblock %}
+
+{% block content %}
+<div class="py-5">
+    <h2 class="mb-1">Analysis history</h2>
+    <p style="color: var(--ink-soft);" class="mb-4">Every resume you've analyzed, most recent first.</p>
+
+    <div class="surface-card p-0">
+        {% if analyses %}
+            <div class="table-responsive">
+                <table class="table history-table mb-0">
+                    <thead>
+                        <tr>
+                            <th class="ps-4">Resume</th>
+                            <th>Date</th>
+                            <th>Score</th>
+                            <th>Recommendation</th>
+                            <th class="text-end pe-4">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for analysis in analyses %}
+                        {% set band = "good" if analysis.match_score >= 75 else ("moderate" if analysis.match_score >= 50 else "poor") %}
+                        <tr>
+                            <td class="ps-4">{{ analysis.resume_name }}</td>
+                            <td>{{ analysis.created_at.strftime("%d %b %Y, %H:%M") }}</td>
+                            <td class="fw-semibold">{{ analysis.match_score | round(0, 'floor') | int }}/100</td>
+                            <td><span class="badge-recommendation badge-{{ band }}">{{ analysis.recommendation }}</span></td>
+                            <td class="text-end pe-4">
+                                <a href="{{ url_for('results', analysis_id=analysis.id) }}" class="btn btn-sm btn-outline-accent">View</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <h3 class="h5">No analyses yet</h3>
+                <p class="mb-3">Run your first resume-to-job match to see it show up here.</p>
+                <a href="{{ url_for('analyzer') }}" class="btn btn-accent">Analyze a resume</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Results — ResuMatch{% endblock %}
+
+{% block content %}
+{% set band = "good" if analysis.match_score >= 75 else ("moderate" if analysis.match_score >= 50 else "poor") %}
+
+<div class="py-5">
+    <div class="row g-4">
+
+        <div class="col-lg-7">
+            <div class="surface-card mb-4 band-{{ band }}">
+                <p class="mb-1" style="color: var(--ink-soft); font-size: 0.9rem;">Match score for {{ analysis.resume_name }}</p>
+                <div class="score-display">
+                    <span class="score-number">{{ analysis.match_score | round(0, 'floor') | int }}</span>
+                    <span class="score-unit">/ 100</span>
+                </div>
+                <div class="score-bar-track">
+                    <div class="score-bar-fill" style="width: {{ analysis.match_score }}%;"></div>
+                </div>
+                <span class="badge-recommendation badge-{{ band }} mt-3 d-inline-block">
+                    {{ analysis.recommendation }}
+                </span>
+            </div>
+
+            <div class="surface-card mb-4">
+                <h3 class="h5 mb-3">Matched skills</h3>
+                {% if analysis.matched_skills_list %}
+                    <div>
+                        {% for skill in analysis.matched_skills_list %}
+                            <span class="pill pill-matched">{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p style="color: var(--ink-soft);" class="mb-0">No overlapping skills were found between the resume and the job description.</p>
+                {% endif %}
+            </div>
+
+            <div class="surface-card mb-4">
+                <h3 class="h5 mb-3">Missing skills</h3>
+                {% if analysis.missing_skills_list %}
+                    <div>
+                        {% for skill in analysis.missing_skills_list %}
+                            <span class="pill pill-missing">{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                    <p class="mt-3 mb-0" style="color: var(--ink-soft); font-size: 0.9rem;">
+                        Consider highlighting relevant experience with these, if you have it, or adding a course/project that covers them.
+                    </p>
+                {% else %}
+                    <p style="color: var(--ink-soft);" class="mb-0">No missing required skills detected. Nice work.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="surface-card mb-4">
+                <h3 class="h5 mb-3">Resume information</h3>
+                <div class="info-row">
+                    <span class="info-label">Name</span>
+                    <span class="info-value">{{ analysis.candidate_name or "Not detected" }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Email</span>
+                    <span class="info-value">{{ analysis.candidate_email or "Not detected" }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Phone</span>
+                    <span class="info-value">{{ analysis.candidate_phone or "Not detected" }}</span>
+                </div>
+            </div>
+
+            <div class="surface-card mb-4">
+                <h3 class="h5 mb-3">Education</h3>
+                {% if analysis.education_list %}
+                    <ul class="mb-0 ps-3">
+                        {% for line in analysis.education_list %}
+                            <li style="color: var(--ink-soft); font-size: 0.92rem;">{{ line }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p style="color: var(--ink-soft);" class="mb-0">Nothing detected.</p>
+                {% endif %}
+            </div>
+
+            <div class="surface-card mb-4">
+                <h3 class="h5 mb-3">Experience</h3>
+                {% if analysis.experience_list %}
+                    <ul class="mb-0 ps-3">
+                        {% for line in analysis.experience_list %}
+                            <li style="color: var(--ink-soft); font-size: 0.92rem;">{{ line }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p style="color: var(--ink-soft);" class="mb-0">Nothing detected.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex gap-3">
+        <a href="{{ url_for('analyzer') }}" class="btn btn-accent">Analyze another resume</a>
+        <a href="{{ url_for('history') }}" class="btn btn-outline-accent">View history</a>
+    </div>
+</div>
+{% endblock %}

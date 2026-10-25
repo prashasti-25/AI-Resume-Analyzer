@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}ResuMatch — Know how well your resume fits the job{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+            <h1>Know how well your resume fits the job — before you hit apply.</h1>
+            <p class="lead-copy">
+                Upload your resume and paste a job description. ResuMatch reads both,
+                scores the fit, and shows you exactly which skills matched and which
+                ones you're missing.
+            </p>
+            <div class="d-flex gap-3 mt-4">
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('analyzer') }}" class="btn btn-accent btn-lg px-4">Analyze a resume</a>
+                {% else %}
+                    <a href="{{ url_for('register') }}" class="btn btn-accent btn-lg px-4">Get started</a>
+                    <a href="{{ url_for('login') }}" class="btn btn-outline-accent btn-lg px-4">Log in</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="score-mock">
+                <div class="mock-row">
+                    <span class="mock-label">Match score</span>
+                    <span style="font-family:'Sora',sans-serif; font-weight:700; font-size:1.6rem; color: var(--accent);">82%</span>
+                </div>
+                <div class="mock-row">
+                    <span class="mock-label">Matched skills</span>
+                    <span>
+                        <span class="pill pill-matched">Python</span>
+                        <span class="pill pill-matched">Flask</span>
+                        <span class="pill pill-matched">SQL</span>
+                    </span>
+                </div>
+                <div class="mock-row">
+                    <span class="mock-label">Missing skills</span>
+                    <span>
+                        <span class="pill pill-missing">Docker</span>
+                        <span class="pill pill-missing">AWS</span>
+                    </span>
+                </div>
+                <div class="mock-row">
+                    <span class="mock-label">Recommendation</span>
+                    <span style="font-weight:600; color: var(--accent-dark);">Good Match</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pb-5">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="surface-card h-100">
+                <h3 class="h5">What it does</h3>
+                <ul class="feature-list mt-3">
+                    <li>Extracts contact info, skills, education, and experience from your resume PDF</li>
+                    <li>Compares your resume against any job description using NLP and TF-IDF</li>
+                    <li>Gives you a 0–100 match score with a clear recommendation</li>
+                    <li>Highlights exactly which required skills you're missing</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="surface-card h-100">
+                <h3 class="h5">How it works</h3>
+                <ul class="feature-list mt-3">
+                    <li>Your resume is parsed into structured text and skills</li>
+                    <li>Both texts are cleaned and vectorized with TF-IDF</li>
+                    <li>Cosine similarity and skill overlap combine into one score</li>
+                    <li>Every past analysis is saved to your history</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
