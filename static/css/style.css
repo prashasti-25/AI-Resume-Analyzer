@@ -1,0 +1,332 @@
+/* ==========================================================
+   Design tokens
+   ========================================================== */
+:root {
+    --bg: #F7F8FA;
+    --surface: #FFFFFF;
+    --ink: #1B2430;
+    --ink-soft: #5B6472;
+    --border: #E3E6EA;
+
+    --accent: #2F6F5E;       /* teal-green: matched / good */
+    --accent-dark: #21504A;
+    --accent-soft: #E4F0EC;
+
+    --warn: #B5541D;         /* rust: missing / needs work */
+    --warn-soft: #FBEBE1;
+
+    --moderate: #9A7B15;     /* olive-amber: moderate match */
+    --moderate-soft: #FBF3DD;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main { flex: 1; }
+
+h1, h2, h3, h4, .display-heading {
+    font-family: "Sora", system-ui, sans-serif;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+}
+
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+
+/* ==========================================================
+   Navbar
+   ========================================================== */
+.app-navbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0.9rem 0;
+}
+
+.navbar-brand {
+    font-family: "Sora", sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--ink);
+}
+.navbar-brand span { color: var(--accent); }
+
+.app-navbar .nav-link {
+    color: var(--ink-soft);
+    font-weight: 500;
+}
+.app-navbar .nav-link:hover { color: var(--ink); }
+
+.btn-accent {
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    color: #fff;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+}
+.btn-accent:hover {
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+    color: #fff;
+}
+
+.btn-outline-accent {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+}
+.btn-outline-accent:hover {
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+}
+
+/* ==========================================================
+   Footer
+   ========================================================== */
+.app-footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+}
+.app-footer p {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ==========================================================
+   Flash messages
+   ========================================================== */
+.flash-stack { margin-top: 1.25rem; }
+
+/* ==========================================================
+   Hero (index page)
+   ========================================================== */
+.hero {
+    padding: 4.5rem 0 3.5rem;
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 16ch;
+}
+
+.hero p.lead-copy {
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+    max-width: 46ch;
+}
+
+/* Static mock score card used as the hero visual */
+.score-mock {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: 0 18px 40px -24px rgba(27, 36, 48, 0.25);
+}
+
+.score-mock .mock-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+}
+.score-mock .mock-row:last-child { border-bottom: none; }
+
+.score-mock .mock-label {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0.2rem 0.3rem 0.2rem 0;
+}
+.pill-matched { background: var(--accent-soft); color: var(--accent-dark); }
+.pill-missing { background: var(--warn-soft); color: var(--warn); border: 1px dashed var(--warn); }
+
+.feature-list { list-style: none; padding: 0; margin: 0; }
+.feature-list li {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    color: var(--ink-soft);
+}
+.feature-list li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 8px; height: 8px;
+    margin-top: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+/* ==========================================================
+   Auth pages (login / register)
+   ========================================================== */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 3.5rem 0;
+}
+
+.auth-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 2.25rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 18px 40px -28px rgba(27, 36, 48, 0.2);
+}
+
+.auth-card h2 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+.auth-card .sub { color: var(--ink-soft); margin-bottom: 1.5rem; font-size: 0.95rem; }
+
+.form-control, .form-select {
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    padding: 0.6rem 0.85rem;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.form-label { font-weight: 600; font-size: 0.9rem; color: var(--ink); }
+
+/* ==========================================================
+   Analyzer page
+   ========================================================== */
+.analyzer-card, .surface-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+}
+
+.upload-drop {
+    border: 1.5px dashed var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.75rem;
+    text-align: center;
+    background: var(--bg);
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+.upload-drop:hover, .upload-drop.dragover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
+.upload-drop .file-name {
+    font-weight: 600;
+    color: var(--accent-dark);
+    margin-top: 0.5rem;
+}
+
+/* ==========================================================
+   Results page
+   ========================================================== */
+.score-display {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+.score-display .score-number {
+    font-family: "Sora", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+.score-display .score-unit {
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+}
+
+.score-bar-track {
+    height: 10px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 0.75rem;
+}
+.score-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.badge-recommendation {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.band-good { color: var(--accent); }
+.band-good .score-bar-fill { background: var(--accent); }
+.badge-good { background: var(--accent-soft); color: var(--accent-dark); }
+
+.band-moderate { color: var(--moderate); }
+.band-moderate .score-bar-fill { background: var(--moderate); }
+.badge-moderate { background: var(--moderate-soft); color: var(--moderate); }
+
+.band-poor { color: var(--warn); }
+.band-poor .score-bar-fill { background: var(--warn); }
+.badge-poor { background: var(--warn-soft); color: var(--warn); }
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+}
+.info-row:last-child { border-bottom: none; }
+.info-row .info-label { color: var(--ink-soft); }
+.info-row .info-value { font-weight: 600; text-align: right; }
+
+/* ==========================================================
+   History page
+   ========================================================== */
+.history-table th {
+    color: var(--ink-soft);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: none;
+    border-bottom: 1px solid var(--border);
+}
+.history-table td {
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+.history-table tr:last-child td { border-bottom: none; }
+
+.empty-state {
+    text-align: center;
+    padding: 3.5rem 1rem;
+    color: var(--ink-soft);
+}
+
+@media (max-width: 767px) {
+    .hero h1 { font-size: 2rem; }
+}

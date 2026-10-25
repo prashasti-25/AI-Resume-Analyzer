@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Analyze a resume — ResuMatch{% endblock %}
+
+{% block content %}
+<div class="py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h2 class="mb-1">Analyze a resume</h2>
+            <p style="color: var(--ink-soft);" class="mb-4">Upload a resume PDF and paste the job description you want to match it against.</p>
+
+            <div class="analyzer-card">
+                <form method="POST" action="{{ url_for('analyze') }}" enctype="multipart/form-data" id="analyzeForm">
+
+                    <label class="form-label">Resume (PDF only)</label>
+                    <label for="resumeInput" class="upload-drop mb-4" id="uploadDrop">
+                        <div>Click to choose a file, or drag and drop it here</div>
+                        <div class="file-name" id="fileName"></div>
+                    </label>
+                    <input type="file" id="resumeInput" name="resume" accept="application/pdf" class="d-none" required>
+
+                    <div class="mb-4">
+                        <label class="form-label" for="jobDescription">Job description</label>
+                        <textarea class="form-control" id="jobDescription" name="job_description" rows="8"
+                                  placeholder="Paste the full job description here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-accent btn-lg w-100" id="analyzeBtn">
+                        <span id="analyzeBtnText">Analyze match</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    initAnalyzerForm();
+</script>
+{% endblock %}
