@@ -1,0 +1,71 @@
+skill,category
+Python,Programming Language
+Java,Programming Language
+C++,Programming Language
+C,Programming Language
+JavaScript,Programming Language
+TypeScript,Programming Language
+SQL,Programming Language
+R,Programming Language
+Go,Programming Language
+PHP,Programming Language
+Flask,Framework
+Django,Framework
+FastAPI,Framework
+React,Framework
+Angular,Framework
+Vue,Framework
+Node.js,Framework
+Spring Boot,Framework
+Bootstrap,Framework
+jQuery,Framework
+Pandas,Library
+NumPy,Library
+Scikit-learn,Library
+TensorFlow,Library
+Keras,Library
+PyTorch,Library
+NLTK,Library
+Matplotlib,Library
+Seaborn,Library
+OpenCV,Library
+MySQL,Database
+PostgreSQL,Database
+SQLite,Database
+MongoDB,Database
+Oracle,Database
+Redis,Database
+AWS,Cloud
+Azure,Cloud
+GCP,Cloud
+Docker,DevOps
+Kubernetes,DevOps
+Jenkins,DevOps
+Git,DevOps
+GitHub,DevOps
+GitLab,DevOps
+CI/CD,DevOps
+Linux,Operating System
+Windows,Operating System
+HTML,Web
+CSS,Web
+REST API,Web
+GraphQL,Web
+Machine Learning,Concept
+Deep Learning,Concept
+Data Analysis,Concept
+Data Visualization,Concept
+Natural Language Processing,Concept
+Computer Vision,Concept
+Artificial Intelligence,Concept
+Statistics,Concept
+Excel,Tool
+Tableau,Tool
+Power BI,Tool
+Jira,Tool
+Postman,Tool
+Communication,Soft Skill
+Teamwork,Soft Skill
+Leadership,Soft Skill
+Problem Solving,Soft Skill
+Time Management,Soft Skill
